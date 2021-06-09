@@ -24,7 +24,7 @@ $computers | foreach-object {
     try {
 
         # Get greatest date from all servers.
-        $Maximum = [bigint]($Current_Grouped_PCs.ll | measure-object -Maximum).Maximum
+        $Maximum = [System.Linq.Enumerable]::Max([bigint[]]$Current_Grouped_PCs.ll)
 
         # Get object that matches the greatest date. (Can technically be skipped if no need for source server).
         # -ge comparison operator is needed as measure-object messes up with the real int value off ll (reduces the value).
